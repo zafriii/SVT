@@ -7,7 +7,6 @@ public class BookingService {
     }
 
     public boolean bookService(double amount) {
-        // Process payment when booking a service
         return paymentService.processPayment(amount);
     }
 }
