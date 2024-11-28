@@ -101,7 +101,7 @@ class CalculatorTest {
     @RepeatedTest(5)
     void generateRandomNumber() {
         {
-            assertTrue(Math.random() < 10, "Random number is less than 0.5");
+            assertTrue(Math.random() < 10, "Random number is less than 10");
         }
     }
 
