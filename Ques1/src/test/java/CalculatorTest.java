@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
@@ -100,10 +103,29 @@ class CalculatorTest {
         assertEquals(0,calculator.add(0,0));
     }
 
+
+    @ParameterizedTest
+    @CsvSource({
+            "2, 3, 5",
+            "2, 5, 7",
+            "0, 0, 0"
+    })
+    void testAdd(int a, int b, int expected) {
+        assertEquals(expected, calculator.add(a, b));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2, 0, -1})
+    void testadd(int a) {
+        int b = 3; // Fixed second value for testing
+        int expected = a + b; // Calculate the expected result
+        assertEquals(expected, calculator.add(a, b));
+    }
+
     @RepeatedTest(5)
     void generateRandomNumber() {
         {
-            assertTrue(Math.random() < 10, "Random number is less than 0.5");
+            assertTrue(Math.random() < 10, "Random number is less than 10");
         }
     }
 
